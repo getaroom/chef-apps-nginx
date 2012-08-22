@@ -1,0 +1,9 @@
+# www/www.conf.erb
+
+server {
+  listen 80;
+  server_name <%= @app['id'] %>;
+  root <%= @app['deploy_to'] %>/public;
+  error_log <%= node['nginx']['log_dir'] %>/<%= @app['id'] %>-error.log;
+  access_log <%= node['nginx']['log_dir'] %>/<%= @app['id'] %>-access.log;
+}

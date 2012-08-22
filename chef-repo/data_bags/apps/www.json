@@ -1,0 +1,11 @@
+{
+  "id": "www",
+  "owner": "www",
+  "group": "www",
+  "deploy_to": "/srv/www",
+  "server_roles": ["web"],
+  "nginx_roles": ["web"],
+  "ingredients": {
+    "web": ["nginx_site"]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "luigi",
+  "owner": "luigi",
+  "group": "luigi",
+  "deploy_to": "/srv/luigi",
+  "server_roles": ["web"],
+  "nginx_roles": ["web"],
+  "ingredients": {
+    "web": ["nginx_site"]
+  },
+  "nginx_site_cookbook": "custom_cookbook",
+  "nginx_site_template": "custom_template.conf.erb"
+}

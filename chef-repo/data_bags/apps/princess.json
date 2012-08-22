@@ -1,0 +1,11 @@
+{
+  "id": "princess",
+  "owner": "princess",
+  "group": "princess",
+  "deploy_to": "/srv/princess",
+  "server_roles": ["princess"],
+  "nginx_roles": ["princess"],
+  "ingredients": {
+    "princess": ["nginx_site"]
+  }
+}
