@@ -1,5 +1,0 @@
-maintainer       "getaroom"
-maintainer_email "devteam@roomvaluesteam.com"
-license          "MIT"
-description      "Test nginx-apps cookbook"
-version          "1.0.0"
