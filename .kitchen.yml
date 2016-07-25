@@ -11,5 +11,8 @@ platforms:
 suites:
   - name: default
     run_list:
+      - role[supply_chain_utility]
+      - recipe[ohai]
+      - recipe[nginx::source]
       - recipe[apps-nginx::default]
     attributes:
