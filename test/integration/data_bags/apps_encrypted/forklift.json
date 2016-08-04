@@ -1,0 +1,10 @@
+{
+  "id": "forklift",
+  "cloudinary": {
+    "encrypted_data": "qPtrNMjJ4iDQc5xNFD5ZNk24qiiQAO2TF4fACggABDJe5m2rEi4FvNdkKwVn\n2Q7PUy+OwcpDJacwfevOPHrGKi6YRgiPOVludAdZg4mWlKjLnrsPKeQXZFul\ngzd7tmicaEHfC2pv8KeHWMs1Q34VZXnUR9uvbX8wADQRVt/J2XqAuuMAJydR\nq0eC0ycadzBhecCxi5f2zgFGdMapQG1vJyCAUuuJadyVC6TDyAQjVzAlZDEn\nDggWGvu3fMsHh9KT\n",
+    "iv": "yLUrU9K1MXnK+7EOtUriMg==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "databases": "yEgc/scvxp2DsLh4F75mFzDZnV+ARwPJd3RdKqSpetdQj2BEikgpA3Oo1uQI\nbxnV/BtocuXEVu07UAiLL74Id40ipMo9Z7gE5xSFgVsa6V456w/0NaWDsCIX\n+R8w2hPo/8Tixo9ZqRtlE9qvaFy0+UZqhMYUam88GXO7dFao6BTgF3lppEEE\nBKA9IbZJMYzxkj6tgGjKyPC8QP2G++JybWFHuZPpFDtFdcb1pVqk5iOBF2HB\nzdtGCBAU/6bNf95JiV6CTCTY8E0brFAEMLqHS1AtOvrGgnPLj1k013428IGG\nJxaMg7QJtr3TXZIfoHuV\n"
+}

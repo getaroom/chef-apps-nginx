@@ -1,0 +1,15 @@
+{
+  "id": "sumologic_collector_sandbox1",
+  "accessID": {
+    "encrypted_data": "RDl5WUuvNX5uqmImJT9K1waAX/2XDhugukGCfh/7NJaDZmWBfCryZ9iNBv3Q\ntLA4\n",
+    "iv": "7LmPGP3/1NIrw7SJONBnxQ==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "accessKey": {
+    "encrypted_data": "Cs9q6r/FX0gS5gCNYVJQ4B2r0ZLQ10ZBDoPl4YV4ZObGLCRd8HxDqPZPqgRE\nmAAx51scmt0g2WvHzBFg4BpVwFLch3u6ppVFbED7Z3+tbw7+gH1K/B8Czv+I\nz/MJjQl4\n",
+    "iv": "lwgcf5cFnQnHV/zkxWJ6LA==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  }
+}

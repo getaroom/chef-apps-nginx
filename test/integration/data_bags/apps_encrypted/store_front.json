@@ -1,0 +1,15 @@
+{
+  "id": "store_front",
+  "cloudinary": {
+    "encrypted_data": "qPtrNMjJ4iDQc5xNFD5ZNk24qiiQAO2TF4fACggABDJe5m2rEi4FvNdkKwVn\n2Q7PUy+OwcpDJacwfevOPHrGKi6YRgiPOVludAdZg4mWlKjLnrsPKeQXZFul\ngzd7tmicaEHfC2pv8KeHWMs1Q34VZXnUR9uvbX8wADQRVt/J2XqAuuMAJydR\nq0eC0ycadzBhecCxi5f2zgFGdMapQG1vJyCAUuuJadyVC6TDyAQjVzAlZDEn\nDggWGvu3fMsHh9KT\n",
+    "iv": "yLUrU9K1MXnK+7EOtUriMg==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "databases": {
+    "encrypted_data": "u243RJFiO5r2iE65I8ZPhh0VrtqPaSojnDUQQmgpCcDODDHmuhwqjFRpB4/P\n2dxqSDiBy4P1U4shLnZi3UKHypbxYQgqqGxTliavNfCclOaHIjMQnGC3rIsm\noS0mQBQSVbkyM2pCZTshWifr13r2FwX79Ytz/W1hJlIR7zdDTvLlr510lbJb\nFB2lA0Tchr0a\n",
+    "iv": "0AaaYBXAg5+4jimNZOCUmg==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  }
+}

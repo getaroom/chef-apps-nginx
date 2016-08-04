@@ -1,0 +1,108 @@
+{
+  "id": "supply_chain",
+  "owner": "supply_chain",
+  "group": "supply_chain",
+  "shell": "/bin/bash",
+  "deploy_to": "/srv/supply_chain",
+  "ruby_version": "ruby-1.9.3-p327-railsexpress",
+  "ingredients": {
+    "standalone_deployment":                    [".ruby-version", "couchbase.yml", "newrelic.yml", "cloudinary.yml", "redis.yml", "nginx_site", "passenger"],
+    "supply_chain_app_server":                  [".ruby-version", "couchbase.yml", "newrelic.yml", "cloudinary.yml", "redis.yml", "nginx_site", "passenger"],
+    "supply_chain_content_worker":              [".ruby-version", "couchbase.yml", "newrelic.yml", "cloudinary.yml", "redis.yml"],
+    "supply_chain_room_rate_worker":            [".ruby-version", "couchbase.yml", "newrelic.yml", "cloudinary.yml", "redis.yml"],
+    "supply_chain_utility":                     [".ruby-version", "couchbase.yml", "newrelic.yml", "cloudinary.yml", "redis.yml"]
+  },
+  "server_roles":          ["standalone_deployment", "supply_chain_app_server", "supply_chain_content_worker", "supply_chain_room_rate_worker", "supply_chain_utility"],
+  "couchbase_role":        ["standalone_deployment", "standalone_jenkins", "supply_chain_mc_couchbase"],
+  "mongodb_role":          ["standalone_deployment", "supply_chain_mongodb_coredb", "supply_chain_mongodb_coredb_ssd"],
+  "nginx_roles":           ["standalone_deployment", "supply_chain_app_server"],
+  "rabbitmq_role":         ["standalone_deployment", "supply_chain_rabbitmq"],
+  "redis_master_role":     ["standalone_deployment", "supply_chain_redis_master"],
+  "nginx_site_cookbook": "nginx_config",
+  "nginx_site_template": "nginx_site.conf.erb",
+  "nginx_server_names": {
+    "integration1": ["supply.integration1.testaroom.com"],
+    "integration2": ["supply.integration2.testaroom.com"],
+    "preprod": ["supply.preprod.testaroom.com", "supply.preprod-ec2-us-east-1.testaroom.com"],
+    "production": ["supply.getaroom.com", "supply-production-ec2-us-east-1.getaroom.com"],
+    "sandbox1": ["supply.sandbox1.testaroom.com"],
+    "sandbox2": ["supply.sandbox2.testaroom.com"],
+    "sandbox3": ["supply.sandbox3.testaroom.com"],
+    "staging": ["supply.staging.testaroom.com"],
+    "staging2": ["supply.staging2.testaroom.com"]
+  },
+  "rabbitmq_vhosts": {
+    "preprod":    { "user": "guest", "password": "guest", "vhost": "/supply_chain" },
+    "production": { "user": "guest", "password": "guest", "vhost": "/supply_chain" },
+    "staging":    { "user": "guest", "password": "guest", "vhost": "/supply_chain" },
+    "staging2":    { "user": "guest", "password": "guest", "vhost": "/supply_chain" }
+  },
+  "couchbase_buckets": {
+    "production": {
+      "couchbase_role": ["supply_chain_mc_couchbase"],
+      "bucket": "default",
+      "type": "memcached",
+      "memory_quota_percent": 1.0
+    },
+    "preprod": {
+      "couchbase_role": ["supply_chain_mc_couchbase"],
+      "bucket": "default",
+      "type": "memcached",
+      "memory_quota_percent": 1.0
+    },
+    "staging": {
+      "bucket": "default",
+      "type": "couchbase",
+      "memory_quota_mb": 128
+    },
+    "staging2": {
+      "bucket": "default",
+      "type": "couchbase",
+      "memory_quota_mb": 128
+    }
+  },
+  "cloudinary": {
+    "production": {
+      "api_key": "364792546728318",
+      "cloud_name": "ds3cxncsh",
+      "sign_url": true
+    },
+    "preprod": {
+      "api_key": "556159523764835",
+      "cloud_name": "ds3cxncsh",
+      "sign_url": true
+    },
+    "staging": {
+      "api_key": "449814663864844",
+      "cloud_name": "docquu1ru",
+      "sign_url": true
+    },
+    "staging": {
+      "api_key": "449814663864844",
+      "cloud_name": "docquu1ru",
+      "sign_url": true
+    }
+  },
+  "newrelic": {
+    "_default": {
+      "apdex_t": 1.0,
+      "capture_memcache_keys": true,
+      "capture_params": true,
+      "monitor_mode": true,
+      "ssl": true,
+      "browser_monitoring": { "auto_instrument": false },
+      "error_collector": { "ignore_errors": "ActionController::RoutingError" },
+      "transaction_tracer": { "record_sql": "raw", "transaction_threshold": "apdex_f" },
+      "background": { "monitor_mode": true, "app_name": "Background Jobs" }
+    },
+    "integration1": { "app_name": "Integration 1 Supply Chain" },
+    "integration2": { "app_name": "Integration 2 Supply Chain" },
+    "production": { "app_name": "Production Supply Chain" },
+    "preprod": { "app_name": "Preprod Supply Chain" },
+    "sandbox1": { "app_name": "Sandbox 1 Supply Chain" },
+    "sandbox2": { "app_name": "Sandbox 2 Supply Chain" },
+    "sandbox3": { "app_name": "Sandbox 3 Supply Chain" },
+    "staging": { "app_name": "Staging Supply Chain" },
+    "staging2": { "app_name": "Staging 2 Supply Chain" }
+  }
+}

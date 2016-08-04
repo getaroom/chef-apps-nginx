@@ -8,10 +8,16 @@ provisioner:
 platforms:
   - name: ubuntu-14.04
 
+verifier:
+  name: inspec
+  sudo: true
+
 suites:
   - name: default
     run_list:
       - role[supply_chain_utility]
+      - role[supply_chain_utility_deployment]
+      - role[supply_chain]
       - recipe[ohai]
       - recipe[nginx::source]
       - recipe[apps-nginx::default]

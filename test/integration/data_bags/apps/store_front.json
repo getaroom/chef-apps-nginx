@@ -1,0 +1,93 @@
+{
+  "id": "store_front",
+  "owner": "store_front",
+  "group": "store_front",
+  "shell": "/bin/bash",
+  "deploy_to": "/srv/store_front",
+  "ruby_version": "ruby-1.9.3-p327-railsexpress",
+  "nginx_site_cookbook": "nginx_config",
+  "nginx_site_template": "nginx_site.conf.erb",
+  "ingredients": {
+    "standalone_deployment":  [".ruby-version", "newrelic.yml", "database.yml", "cloudinary.yml", "redis.yml", "nginx_site", "passenger"],
+    "store_front_app_server": [".ruby-version", "newrelic.yml", "database.yml", "cloudinary.yml", "redis.yml", "nginx_site", "passenger"],
+    "store_front_utility":    [".ruby-version", "newrelic.yml", "database.yml", "cloudinary.yml", "redis.yml"]
+  },
+  "server_roles":      ["standalone_deployment", "store_front_app_server", "store_front_utility"],
+  "mysql_master_role": ["standalone_deployment", "store_front_mysql_master"],
+  "nginx_roles":       ["standalone_deployment", "store_front_app_server"],
+  "redis_master_role": ["standalone_deployment", "store_front_redis_master"],
+  "nginx_server_names": {
+    "integration1": ["www.integration1.testaroom.com", "m.integration1.testaroom.com", "book.integration1.testaroom.com", "search.integration1.testaroom.com"],
+    "integration2": ["www.integration2.testaroom.com", "m.integration2.testaroom.com", "book.integration2.testaroom.com", "search.integration2.testaroom.com"],
+    "preprod": ["www.preprod.testaroom.com", "m.preprod.testaroom.com", "book.preprod.testaroom.com", "search.preprod.testaroom.com", "www.preprod-ec2-us-east-1.testaroom.com"],
+    "production": ["www.getaroom.com", "m.getaroom.com", "book.getaroom.com", "search.getaroom.com", "www-production-ec2-us-east-1.getaroom.com"],
+    "sandbox1": ["www.sandbox1.testaroom.com", "m.sandbox1.testaroom.com", "book.sandbox1.testaroom.com", "search.sandbox1.testaroom.com"],
+    "sandbox2": ["www.sandbox2.testaroom.com", "m.sandbox2.testaroom.com", "book.sandbox2.testaroom.com", "search.sandbox2.testaroom.com"],
+    "sandbox3": ["www.sandbox3.testaroom.com", "m.sandbox3.testaroom.com", "book.sandbox3.testaroom.com", "search.sandbox3.testaroom.com"],
+    "staging": ["www.staging.testaroom.com", "m.staging.testaroom.com", "book.staging.testaroom.com", "search.staging.testaroom.com"],
+    "staging2": ["www.staging2.testaroom.com", "m.staging2.testaroom.com", "book.staging2.testaroom.com", "search.staging2.testaroom.com"]
+  },
+  "cloudinary": {
+    "production": {
+      "api_key": "364792546728318",
+      "cloud_name": "ds3cxncsh",
+      "sign_url": true
+    },
+    "preprod": {
+      "api_key": "556159523764835",
+      "cloud_name": "ds3cxncsh",
+      "sign_url": true
+    },
+    "staging": {
+      "api_key": "449814663864844",
+      "cloud_name": "docquu1ru",
+      "sign_url": true
+    },
+    "staging2": {
+      "api_key": "449814663864844",
+      "cloud_name": "docquu1ru",
+      "sign_url": true
+    }
+  },
+  "databases": {
+    "production": {
+      "adapter": "mysql2",
+      "database": "store_front",
+      "username": "store_front",
+      "reconnect": true
+    },
+    "preprod": {
+      "adapter": "mysql2",
+      "database": "store_front",
+      "username": "store_front",
+      "reconnect": true
+    },
+    "staging": {
+      "adapter": "mysql2",
+      "database": "store_front",
+      "username": "store_front",
+      "reconnect": true
+    }
+  },
+  "newrelic": {
+    "_default": {
+      "apdex_t": 2.0,
+      "capture_memcache_keys": true,
+      "capture_params": true,
+      "monitor_mode": true,
+      "ssl": true,
+      "browser_monitoring": { "auto_instrument": false },
+      "error_collector": { "ignore_errors": "ActionController::RoutingError" },
+      "transaction_tracer": { "record_sql": "raw", "transaction_threshold": "apdex_f" }
+    },
+    "integration1": { "app_name": "Integration 1 Store Front" },
+    "integration2": { "app_name": "Integration 2 Store Front" },
+    "production": { "app_name": "Production Store Front" },
+    "preprod": { "app_name": "Preprod Store Front" },
+    "sandbox1": { "app_name": "Sandbox 1 Store Front" },
+    "sandbox2": { "app_name": "Sandbox 2 Store Front" },
+    "sandbox3": { "app_name": "Sandbox 3 Store Front" },
+    "staging": { "app_name": "Staging Store Front" },
+    "staging2": { "app_name": "Staging 2 Store Front" }
+  }
+}

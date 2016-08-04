@@ -1,0 +1,9 @@
+{
+  "id": "supply_chain",
+  "cloudinary": {
+    "encrypted_data": "qPtrNMjJ4iDQc5xNFD5ZNk24qiiQAO2TF4fACggABDJe5m2rEi4FvNdkKwVn\n2Q7PUy+OwcpDJacwfevOPHrGKi6YRgiPOVludAdZg4mWlKjLnrsPKeQXZFul\ngzd7tmicaEHfC2pv8KeHWMs1Q34VZXnUR9uvbX8wADQRVt/J2XqAuuMAJydR\nq0eC0ycadzBhecCxi5f2zgFGdMapQG1vJyCAUuuJadyVC6TDyAQjVzAlZDEn\nDggWGvu3fMsHh9KT\n",
+    "iv": "yLUrU9K1MXnK+7EOtUriMg==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  }
+}

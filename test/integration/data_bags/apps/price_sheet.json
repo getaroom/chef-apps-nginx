@@ -1,0 +1,59 @@
+{
+  "id": "price_sheet",
+  "owner": "price_sheet",
+  "group": "price_sheet",
+  "shell": "/bin/bash",
+  "deploy_to": "/srv/price_sheet",
+  "server_roles": ["standalone_deployment", "price_sheet_app_server", "price_sheet_utility"],
+  "rabbitmq_role":         ["standalone_deployment", "price_sheet_rabbitmq"],
+  "redis_master_role": ["standalone_deployment", "price_sheet_redis_master"],
+  "redis_cache_master_role": ["standalone_deployment", "price_sheet_redis_cache_master"],
+  "ingredients": {
+    "standalone_deployment":  ["nginx_site", "newrelic.yml"],
+    "price_sheet_app_server": ["nginx_site", "newrelic.yml"],
+    "price_sheet_utility":    ["nginx_site", "newrelic.yml"]
+  },
+  "nginx_server_names": {
+    "integration1": ["availability.integration1.testaroom.com"],
+    "integration2": ["availability.integration2.testaroom.com"],
+    "preprod": ["availability.preprod.testaroom.com"],
+    "production": ["availability.getaroom.com"],
+    "sandbox1": ["availability.sandbox1.testaroom.com"],
+    "sandbox2": ["availability.sandbox2.testaroom.com"],
+    "sandbox3": ["availability.sandbox3.testaroom.com"],
+    "staging": ["availability.staging.testaroom.com"],
+    "staging2": ["availability.staging2.testaroom.com"]
+  },
+  "rabbitmq_vhosts": {
+    "preprod":    { "user": "guest", "password": "guest", "vhost": "/price_sheet" },
+    "production": { "user": "guest", "password": "guest", "vhost": "/price_sheet" },
+    "staging":    { "user": "guest", "password": "guest", "vhost": "/price_sheet" },
+    "staging2":    { "user": "guest", "password": "guest", "vhost": "/price_sheet" }
+  },
+  "nginx_roles":         ["standalone_deployment", "price_sheet_app_server"],
+  "nginx_site_template": "price_sheet_site.conf.erb",
+  "nginx_site_cookbook": "price_sheet",
+  "newrelic": {
+    "_default": {
+      "send_data_on_exit": true,
+      "send_data_on_exit_delay": true,
+      "enable_auto_app_naming": false,
+      "enable_auto_transaction_naming": true,
+      "ssl": true,
+      "transaction_tracer": { "record_sql": "raw", "transaction_threshold": "apdex_f" },
+      "browser_monitoring": { "auto_instrument": true, "enabled": false },
+      "enable_custom_tracing": true,
+      "error_collector": { "enabled": true },
+      "circuitbreaker": { "enabled": false }
+    },
+    "integration1": { "app_name": "Integration 1 Price Sheet" },
+    "integration2": { "app_name": "Integration 2 Price Sheet" },
+    "production": { "app_name": "Production Price Sheet" },
+    "preprod": { "app_name": "Preprod Price Sheet" },
+    "sandbox1": { "app_name": "Sandbox 1 Price Sheet" },
+    "sandbox2": { "app_name": "Sandbox 2 Price Sheet" },
+    "sandbox3": { "app_name": "Sandbox 3 Price Sheet" },
+    "staging": { "app_name": "Staging Price Sheet" },
+    "staging2": { "app_name": "Stating 2 Price Sheet" }
+  }
+}

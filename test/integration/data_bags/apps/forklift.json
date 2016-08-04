@@ -1,0 +1,121 @@
+{
+  "id": "forklift",
+  "owner": "forklift",
+  "group": "forklift",
+  "shell": "/bin/bash",
+  "deploy_to": "/srv/forklift",
+  "ruby_version": "ruby-1.9.3-p327-railsexpress",
+  "nginx_site_cookbook": "nginx_config",
+  "nginx_site_template": "nginx_site.conf.erb",
+  "ingredients": {
+    "standalone_deployment": [".ruby-version", "newrelic.yml", "database.yml", "cloudinary.yml", "redis.yml", "nginx_site", "passenger"],
+    "forklift_app_server":   [".ruby-version", "newrelic.yml", "database.yml", "cloudinary.yml", "redis.yml", "nginx_site", "passenger"],
+    "forklift_utility":      [".ruby-version", "newrelic.yml", "database.yml", "cloudinary.yml", "redis.yml"]
+  },
+  "server_roles":      ["standalone_deployment", "forklift_app_server", "forklift_utility"],
+  "mysql_master_role": ["standalone_deployment", "forklift_mysql_master"],
+  "nginx_roles":       ["standalone_deployment", "forklift_app_server"],
+  "redis_master_role": ["standalone_deployment", "forklift_redis_master"],
+  "nginx_server_names": {
+    "integration1": ["extranet.integration1.testaroom.com", "api.integration1.testaroom.com"],
+    "integration2": ["extranet.integration2.testaroom.com", "api.integration2.testaroom.com"],
+    "preprod": ["extranet.preprod.testaroom.com", "api.preprod.testaroom.com", "extranet.preprod-ec2-us-east-1.testaroom.com"],
+    "production": ["extranet.getaroom.com", "api.getaroom.com", "extranet-production-ec2-us-east-1.getaroom.com"],
+    "sandbox1": ["extranet.sandbox1.testaroom.com", "api.sandbox1.testaroom.com"],
+    "sandbox2": ["extranet.sandbox2.testaroom.com", "api.sandbox2.testaroom.com"],
+    "sandbox3": ["extranet.sandbox3.testaroom.com", "api.sandbox3.testaroom.com"],
+    "staging": ["extranet.staging.testaroom.com", "api.staging.testaroom.com"],
+    "staging2": ["extranet.staging2.testaroom.com", "api.stating2.testaroom.com"]
+  },
+  "cloudinary": {
+    "production": {
+      "api_key": "364792546728318",
+      "cloud_name": "ds3cxncsh",
+      "sign_url": true
+    },
+    "preprod": {
+      "api_key": "556159523764835",
+      "cloud_name": "ds3cxncsh",
+      "sign_url": true
+    },
+    "staging": {
+      "api_key": "449814663864844",
+      "cloud_name": "docquu1ru",
+      "sign_url": true
+    },
+    "staging2": {
+      "api_key": "449814663864844",
+      "cloud_name": "docquu1ru",
+      "sign_url": true
+    }
+  },
+  "databases": {
+    "production": {
+      "adapter": "mysql2",
+      "database": "forklift",
+      "username": "forklift",
+      "read_slave_username": "forklift",
+      "reconnect": true,
+      "encoding": "utf8"
+    },
+    "rates_production": {
+      "mysql_master_role": ["store_front_mysql_master"],
+      "adapter": "mysql2",
+      "database": "store_front",
+      "username": "forklift",
+      "reconnect": true,
+      "encoding": "utf8"
+    },
+    "preprod": {
+      "adapter": "mysql2",
+      "database": "forklift",
+      "username": "forklift",
+      "read_slave_username": "forklift",
+      "reconnect": true,
+      "encoding": "utf8"
+    },
+    "rates_preprod": {
+      "mysql_master_role": ["store_front_mysql_master"],
+      "adapter": "mysql2",
+      "database": "store_front",
+      "username": "forklift",
+      "reconnect": true,
+      "encoding": "utf8"
+    },
+    "staging": {
+      "adapter": "mysql2",
+      "database": "forklift",
+      "username": "forklift",
+      "reconnect": true,
+      "encoding": "utf8"
+    },
+    "rates_staging": {
+      "adapter": "mysql2",
+      "database": "store_front",
+      "username": "forklift",
+      "reconnect": true,
+      "encoding": "utf8"
+    }
+  },
+  "newrelic": {
+    "_default": {
+      "apdex_t": 0.5,
+      "capture_memcache_keys": true,
+      "capture_params": true,
+      "monitor_mode": true,
+      "ssl": true,
+      "browser_monitoring": { "auto_instrument": false },
+      "error_collector": { "ignore_errors": "ActionController::RoutingError" },
+      "transaction_tracer": { "record_sql": "raw", "transaction_threshold": "apdex_f" }
+    },
+    "integration1": { "app_name": "Integration 1 Forklift" },
+    "integration2": { "app_name": "Integration 2 Forklift" },
+    "production": { "app_name": "Production Forklift" },
+    "preprod": { "app_name": "Preprod Forklift" },
+    "sandbox1": { "app_name": "Sandbox 1 Forklift" },
+    "sandbox2": { "app_name": "Sandbox 2 Forklift" },
+    "sandbox3": { "app_name": "Sandbox 3 Forklift" },
+    "staging": { "app_name": "Staging Forklift" },
+    "staging2": { "app_name": "Staging 2 Forklift" }
+  }
+}
