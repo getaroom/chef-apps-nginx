@@ -14,10 +14,11 @@ verifier:
 
 suites:
   - name: default
+    encrypted_data_bag_secret_key_path: "../../chef-repo/.chef/encrypted_data_bag_secret"
     run_list:
+      - role[supply_chain]
       - role[supply_chain_utility]
       - role[supply_chain_utility_deployment]
-      - role[supply_chain]
       - recipe[ohai]
       - recipe[nginx::source]
       - recipe[apps-nginx::default]
